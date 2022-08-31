@@ -17,17 +17,17 @@ const WIDTH = 20
 const HEIGHT = 16
 
 type model struct {
-	gameState 	string 
-	board     	[][]string
-	snakeCells 	[][]int  
-	score      	int     
-	fruitCell 	[]int 
+	gameState 		 string 
+	board     		 [][]string
+	snakeCells 		 [][]int  
+	score      		 int     
+	fruitCell 		 []int 
 	currentDirection string
-	newDirection string
+	newDirection 	 string
 }
 
 func initialModel() model {
-	gameBoard := make([][]string,HEIGHT)
+	gameBoard := make([][]string, HEIGHT)
 	for i := 0; i < HEIGHT; i ++ {
 		gameBoard[i] = make([]string, WIDTH) 
 		for j := 0; j < WIDTH; j++ {
@@ -138,14 +138,10 @@ func updateSnake(m model) (model, bool) {
 	head := m.snakeCells[0]
 	
 	switch m.currentDirection{
-	case "up":
-		head = []int{m.snakeCells[0][0] - 1, m.snakeCells[0][1]}
-	case "down":
-		head = []int{m.snakeCells[0][0] + 1, m.snakeCells[0][1]}
-	case "right":
-		head = []int{m.snakeCells[0][0], m.snakeCells[0][1] + 1}
-	case "left":
-		head = []int{m.snakeCells[0][0], m.snakeCells[0][1] - 1}
+	case "up":    head = []int{m.snakeCells[0][0] - 1, m.snakeCells[0][1]}
+	case "down":  head = []int{m.snakeCells[0][0] + 1, m.snakeCells[0][1]}
+	case "right": head = []int{m.snakeCells[0][0], m.snakeCells[0][1] + 1}
+	case "left":  head = []int{m.snakeCells[0][0], m.snakeCells[0][1] - 1}
 	}
 
 	// calculate new head location based on currentDirection
